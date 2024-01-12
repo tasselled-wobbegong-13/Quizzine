@@ -1,13 +1,10 @@
 import React from "react";
-import {useState} from "react";
 
-
-const UserInputForm = () => {
+const UserInputForm = ({ users, setUsers }) => {
   
-  //create form submit functionality: update state adding new user input, reset use input field, rerender users added
+  //create form submit functionality: reset use input field, rerender users added
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("e.target.addMembers.value: ", e.target.addMembers.value);
     await setUsers((prevUsers) => [...prevUsers, e.target.addMembers.value]);
     e.target.addMembers.value = "";
   }
@@ -24,14 +21,11 @@ const UserInputForm = () => {
         placeholder="person123@fakemail.net"
       />
       
-      <button >
+      <button type="submit">
         Add User to Event
       </button>
 
     </form>
-
-    {populateUsers(users)}
-
   </>
   )
 }
