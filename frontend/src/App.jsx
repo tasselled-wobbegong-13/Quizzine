@@ -1,12 +1,10 @@
 import React from "react";
+import Dashboard from "./views/Dashboard";
+import NewEvent from "./views/NewEvent";
 
 const App = () => {
   return (
-    <div>
-      <h1> 
-        Hello World!
-      </h1>
-    </div>
+      <NewEvent />
   )
 }
 
