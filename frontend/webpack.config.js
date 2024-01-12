@@ -1,22 +1,15 @@
 const path = require("path");
-// const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development",
-
-  entry: "./src/index.jsx",
-
+  entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "./public"),
     filename: "./bundle.js",
   },
-
-  // plugins: [new HtmlWebPackPlugin()],
-
   resolve: {
     extensions: [".js", ".jsx"],
   },
-
   module: {
     rules: [
       {
@@ -45,8 +38,8 @@ module.exports = {
     open: true,
     hot: true,
     liveReload: true,
-    // proxy: {
-    //   "/": "http://localhost:8080"
-    // },
+    proxy: {
+      "/ingredients": "http://localhost:8080",
+    },
   },
 };
