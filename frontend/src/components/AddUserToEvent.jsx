@@ -1,26 +1,28 @@
 import React from "react";
-import { useState } from "react";
+import { useState} from "react";
+import populateUsers from "./populateUsers";
 
 const NewEventForm = () => {
-
+  //create user state, *updating state is async
   const  [users, setUsers] = useState([]);
 
-  const handleSubmit = (e) => {
+  //create form submit functionality: update state adding new user input, reset use input field, rerender users added
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUsers = (prevUsers) => {
-      return setUsers(...users, e.target[0].value);
-      <li>e.target[0].value</li>
-    }
-    return newUsers();
+    console.log("e.target.addMembers.value: ", e.target.addMembers.value);
+    await setUsers((prevUsers) => [...prevUsers, e.target.addMembers.value]);
+    e.target.addMembers.value = "";
   }
 
+  //return the form with email input field, add user button, and rendering of added users
   return (
    <>
     <form onSubmit={handleSubmit}>
+
       <input
         type="text"
-        name="addMemembers"
-        id="addMemebers"
+        name="addMembers"
+        id="addMembers"
         placeholder="person123@fakemail.net"
       />
       
@@ -28,15 +30,12 @@ const NewEventForm = () => {
         Add User to Event
       </button>
 
-      <ul>
-        {/* <li>{users}</li> */}
-        {users}
-      </ul>
-
     </form>
+
+    {populateUsers(users)}
+
   </>
   )
-
 }
 
 export default NewEventForm;
