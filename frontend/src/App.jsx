@@ -10,7 +10,10 @@ const App = () => {
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />}/>
-      <Route path="add-event" element={<NewEvent />}/>
+      <Route path="dashboard" element={<NewEvent />}>
+        <Route path="events" element={<div Your Events/>}/>
+        <Route path="vote" element={<div Your Events/>}/>
+      </Route>
       <Route path="*" element={<Error />}/>
     </Routes>
   </BrowserRouter>
