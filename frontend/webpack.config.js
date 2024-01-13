@@ -47,8 +47,28 @@ module.exports = {
     liveReload: true,
     //if theres a 404 error, dev server will refernce index.html. (for react client side routing)
     historyApiFallback: true,
-    // proxy: {
-    //   "/": "http://localhost:8080"
-    // },
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:8080/',
+        secure: false,
+        changeOrigin: true,
+      }
+      // '/addUserToEvent': {
+      //   target: 'http://localhost:8080',
+      //   changeOrigin: true,
+      // },
+    },
   },
 };
+
+// proxy: {
+//   '/api/**': {
+//       target: 'http://localhost:3000/',
+//       secure: false,
+//       changeOrigin: true,
+//     }
+//   // context : ['/api/**'],
+//   // target: 'http://localhost:3000/' ,
+//   // secure: false,
+//   // changeOrigin: true,
+// },
