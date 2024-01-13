@@ -26,4 +26,17 @@ controllerForUsers.addUser = async (req, res, next) => {
   }
 };
 
+controllerForUsers.registerUser = async (req, res, next) => {
+  try{
+    const { first_name, last_name, email, password } = req.body;
+  console.log('entered registerUser middleware')
+  console.log('addUser controller req.body -->', req.body);
+  const newUser = await User.create({first_name, last_name, email, password})
+  res.locals.newUser = newUser;
+  return next();
+  } catch (err) {
+    console.log(err); 
+  }
+};
+
 export default controllerForUsers;
