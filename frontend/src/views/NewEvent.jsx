@@ -4,11 +4,11 @@ import AddUserToEvent from "../components/AddUserToEvent.jsx";
 
 const NewEvent = () => {
   return (
-    <>
-      <NewEventForm />
+    <div >
       <AddUserToEvent />
-    </>
+      <NewEventForm />
+    </div>
   )
 }
 
-export default NewEvent;
+export default NewEvent; 

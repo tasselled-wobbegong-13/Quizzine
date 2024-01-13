@@ -45,6 +45,8 @@ module.exports = {
     open: true,
     hot: true,
     liveReload: true,
+    //if theres a 404 error, dev server will refernce index.html. (for react client side routing)
+    historyApiFallback: true,
     // proxy: {
     //   "/": "http://localhost:8080"
     // },
