@@ -53,22 +53,7 @@ module.exports = {
         secure: false,
         changeOrigin: true,
       }
-      // '/addUserToEvent': {
-      //   target: 'http://localhost:8080',
-      //   changeOrigin: true,
-      // },
     },
   },
 };
 
-// proxy: {
-//   '/api/**': {
-//       target: 'http://localhost:3000/',
-//       secure: false,
-//       changeOrigin: true,
-//     }
-//   // context : ['/api/**'],
-//   // target: 'http://localhost:3000/' ,
-//   // secure: false,
-//   // changeOrigin: true,
-// },

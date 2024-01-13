@@ -10,8 +10,15 @@ router.post('/', controllerForUsers.loginUser, (req, res) => {
 });
 
 router.post('/addUserToEvent', controllerForUsers.addUser, (req, res) => {
+  res.status(200).json('New Event Added to DB!');
+});
+
+router.post('/registerUser', controllerForUsers.registerUser, (req, res) => {
   res.status(200).json('New User Added to DB!');
 });
 
+router.post('/authUser', controllerForUsers.authUser, (req, res) => {
+  res.status(200).json('User Authorized!');
+});
 
 export default router;
