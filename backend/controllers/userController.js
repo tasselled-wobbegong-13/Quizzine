@@ -39,4 +39,22 @@ controllerForUsers.registerUser = async (req, res, next) => {
   }
 };
 
+controllerForUsers.authUser = async (req, res, next) => {
+  try{
+    const { email, password } = req.body;
+  console.log('entered authUser middleware')
+  console.log('addUser controller req.body -->', req.body);
+  const user = await User.findOne({email})
+  if(password === user.password) {
+  // res.locals.user = user;
+    return next();
+  }
+  else {
+    throw Error('Please check credentials and try again')
+  }
+  } catch (err) {
+    console.log(err); 
+  }
+};
+
 export default controllerForUsers;
