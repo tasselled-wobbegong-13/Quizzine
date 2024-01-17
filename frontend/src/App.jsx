@@ -1,5 +1,4 @@
 import React from "react";
-import Dashboard from "./views/Dashboard";
 import Home from "./views/Home"; 
 import NewEvent from "./views/NewEvent"; 
 import Register from "./views/Register";
