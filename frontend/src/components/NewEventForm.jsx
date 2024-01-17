@@ -8,7 +8,7 @@ const NewEventForm = ({users, events, setEvents}) => {
       author: e.target.email.value,
       invited_users: users,
       address: e.target.address.value,
-      newEventName: e.target.newEventName.value,
+      event_name: e.target.newEventName.value,
       date: e.target.date.value,
       time: e.target.date.value
     }
@@ -16,10 +16,23 @@ const NewEventForm = ({users, events, setEvents}) => {
     console.log('eventDetails Obj --> ',eventDetails)
     console.log('invited_users array -->', eventDetails['invited_users'])
 
-    setEvents(prevEvent => [...prevEvent, eventDetails]); 
-    console.log('events state --> ',events)
+    // setEvents(prevEvent => [...prevEvent, eventDetails]); 
+    // console.log('events state --> ',events)
 
-    
+
+    await fetch('api/event/addEvent', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(eventDetails)
+    })
+      .then(data => data.json())
+      .then(jsonData => {
+        // console.log('data within handleSubmit in react component -->', jsonData)
+      })
+      .catch(err => console.log(err)); 
   }
 
   return (

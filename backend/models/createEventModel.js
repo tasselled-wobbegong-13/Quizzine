@@ -14,6 +14,10 @@ const newEventSchema = new Schema({
         type: String,
         required: true
     },
+    event_name: {
+        type: String,
+        required: true
+    },
     date: {
         type: String,
         required: true
@@ -22,7 +26,6 @@ const newEventSchema = new Schema({
         type: String,
         required: true
     }
-
 })
 
 const CreatedNewEvent = mongoose.model('CreatedNewEvent', newEventSchema);

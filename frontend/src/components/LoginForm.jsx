@@ -14,7 +14,7 @@ const LoginForm = () => {
       password: e.target.password.value
     }
 
-    await fetch('api/authUser', {
+    await fetch('api/user/authUser', {
       method: 'POST',
       mode: 'cors',
       headers: {
