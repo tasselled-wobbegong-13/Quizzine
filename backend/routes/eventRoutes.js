@@ -4,7 +4,7 @@ import event from '../models/createEventModel.js';
 const router = express.Router();
 
 
-router.post('/addEvent', controllerForEvents.addEvent, (req, res) => {
+router.post('/addEvent', controllerForEvents.addEvent, controllerForEvents.addEventToUser, (req, res) => {
   res.status(200).json('New Event Added to DB!');
 });
 

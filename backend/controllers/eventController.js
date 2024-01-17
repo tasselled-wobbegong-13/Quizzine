@@ -1,20 +1,10 @@
 import Event from '../models/createEventModel.js';
+import User from '../models/userModel.js';
 
 const controllerForEvents = {};
 
 
 controllerForEvents.addEvent = async (req, res, next) => {
-  // try{
-  //   const { email } = req.body;
-  // console.log('entered addEvent middleware')
-  // console.log('addUser controller req.body -->', req.body);
-  // const newUser = await Event.create({email})
-  // res.locals.newUser = newUser;
-  // return next();
-  // } catch (err) {
-  //   console.log(err); 
-  // }
-
   try{
     const event = req.body;
     
@@ -41,6 +31,23 @@ console.log('entered getevents middleware')
 
   } catch (err) {
     return next({err: 'err at addEvent'})
+  }
+};
+
+
+controllerForEvents.addEventToUser = async (req, res, next) => {
+  console.log('entered addEventToUser middleware')
+  try{
+    const {_id, invited_users} = res.locals.newEvent;
+    invited_users.map((user) => {
+      User.updateOne(
+        {email: user},
+        {$push: {events: _id}}
+        );
+      })
+    return next();
+  } catch (err) {
+    console.log(err); 
   }
 };
 

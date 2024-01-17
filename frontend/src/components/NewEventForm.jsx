@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewEventForm = ({users, events, setEvents}) => {
+const NewEventForm = ({users, events, setUsers, setEvents}) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -10,7 +10,7 @@ const NewEventForm = ({users, events, setEvents}) => {
       address: e.target.address.value,
       event_name: e.target.newEventName.value,
       date: e.target.date.value,
-      time: e.target.date.value
+      time: e.target.time.value
     }
 
     console.log('eventDetails Obj --> ',eventDetails)
@@ -18,7 +18,12 @@ const NewEventForm = ({users, events, setEvents}) => {
 
     // setEvents(prevEvent => [...prevEvent, eventDetails]); 
     // console.log('events state --> ',events)
-
+    setUsers([]);
+    e.target.email.value = '';
+    e.target.address.value = '';
+    e.target.newEventName.value = '';
+    e.target.date.value = '';
+    e.target.time.value = '';
 
     await fetch('api/event/addEvent', {
       method: 'POST',
@@ -29,9 +34,7 @@ const NewEventForm = ({users, events, setEvents}) => {
       body: JSON.stringify(eventDetails)
     })
       .then(data => data.json())
-      .then(jsonData => {
-        // console.log('data within handleSubmit in react component -->', jsonData)
-      })
+
       .catch(err => console.log(err)); 
   }
 
