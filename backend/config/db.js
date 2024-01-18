@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
-
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
+      // 'mongodb+srv://yelpScratchProject:airplanefox-456@cluster0.4mb5rwm.mongodb.net/'
+      'mongodb+srv://arivreduce:g9pOctOjyaU8DtYh@quizzine.pnx3hgq.mongodb.net/?retryWrites=true&w=majority'
+
       //Aaron's Mongo URI:
       // 'mongodb+srv://yelpScratchProject:airplanefox-456@cluster0.4mb5rwm.mongodb.net/'
 
@@ -15,7 +17,6 @@ const connectDB = async () => {
 
       //Daniel's Mongo URI:
       // 'mongodb+srv://sindaniel:h1JbOxNssdjuw6zA@cluster0.vvtsenh.mongodb.net/?retryWrites=true&w=majority'
-
 
     );
     console.log(`MongoDB Connected: ${conn.connection.host}`);
