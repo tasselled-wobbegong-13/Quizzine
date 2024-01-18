@@ -14,7 +14,7 @@ const newEventSchema = new Schema({
         type: String,
         required: true
     },
-    event_name: {
+    newEventName: {
         type: String,
         required: true
     },

@@ -8,7 +8,7 @@ const NewEventForm = ({users, events, setUsers, setEvents}) => {
       author: e.target.email.value,
       invited_users: users,
       address: e.target.address.value,
-      event_name: e.target.newEventName.value,
+      newEventName: e.target.newEventName.value,
       date: e.target.date.value,
       time: e.target.time.value
     }
@@ -16,8 +16,9 @@ const NewEventForm = ({users, events, setUsers, setEvents}) => {
     console.log('eventDetails Obj --> ',eventDetails)
     console.log('invited_users array -->', eventDetails['invited_users'])
 
-    // setEvents(prevEvent => [...prevEvent, eventDetails]); 
+    setEvents(prevEvent => [...prevEvent, eventDetails]); 
     // console.log('events state --> ',events)
+
     setUsers([]);
     e.target.email.value = '';
     e.target.address.value = '';
@@ -25,17 +26,17 @@ const NewEventForm = ({users, events, setUsers, setEvents}) => {
     e.target.date.value = '';
     e.target.time.value = '';
 
-    await fetch('api/event/addEvent', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(eventDetails)
-    })
-      .then(data => data.json())
+    // await fetch('api/event/addEvent', {
+    //   method: 'POST',
+    //   mode: 'cors',
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(eventDetails)
+    // })
+    //   .then(data => data.json())
 
-      .catch(err => console.log(err)); 
+    //   .catch(err => console.log(err)); 
   }
 
   return (

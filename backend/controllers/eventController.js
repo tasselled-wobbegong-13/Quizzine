@@ -39,12 +39,15 @@ controllerForEvents.addEventToUser = async (req, res, next) => {
   console.log('entered addEventToUser middleware')
   try{
     const {_id, invited_users} = res.locals.newEvent;
-    invited_users.map((user) => {
-      User.updateOne(
+    console.log('invited_users: ', res.locals.newEvent.invited_users)
+    console.log('res.locals.newEvent._id: ', res.locals.newEvent._id)
+    
+    for(const user of invited_users) {
+      await User.updateOne(
         {email: user},
         {$push: {events: _id}}
         );
-      })
+      }
     return next();
   } catch (err) {
     console.log(err); 
