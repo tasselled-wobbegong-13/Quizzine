@@ -12,7 +12,7 @@ time: "01/15/24"
 const CurrentEvents = ({ events }) => {
   const handleClick = () => {
     // console.log('currentEvents component events -->', events[0].address);
-    fetch('api/getYelpAPI', {
+    fetch('api/user/getYelpAPI', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
