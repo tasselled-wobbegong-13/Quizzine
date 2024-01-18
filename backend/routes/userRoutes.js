@@ -3,8 +3,6 @@ import controllerForUsers from '../controllers/userController.js';
 import User from '../models/userModel.js';
 const router = express.Router();
 
-
-
 router.post('/', controllerForUsers.loginUser, (req, res) => {
   res.status(200).json('Success!');
 });
@@ -19,6 +17,11 @@ router.post('/registerUser', controllerForUsers.registerUser, (req, res) => {
 
 router.post('/authUser', controllerForUsers.authUser, (req, res) => {
   res.status(200).json('User Authorized!');
+});
+
+router.post('/getYelpAPI', controllerForUsers.getYelpData, (req, res) => {
+  console.log('starting at yelp route');
+  res.status(200).json(res.locals.businesses);
 });
 
 export default router;
