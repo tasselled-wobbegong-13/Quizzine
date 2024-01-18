@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom';
 
-const LoginForm = () => {
+const LoginForm = ({currUser, setCurrUser}) => {
 
   const navigate = useNavigate();
   
@@ -14,7 +14,7 @@ const LoginForm = () => {
       password: e.target.password.value
     }
 
-    await fetch('api/authUser', {
+    await fetch('api/user/authUser', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -24,6 +24,7 @@ const LoginForm = () => {
     })
       .then(data => data.json())
       .then(jsonData => {
+        setCurrUser(email);
         navigate('/dashboard');
         // console.log('data within handleSubmit in react component -->', jsonData)
       })

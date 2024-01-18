@@ -15,7 +15,7 @@ const RegistrationForm = () => {
       password: e.target.password.value
     }
 
-    await fetch('api/registerUser', {
+    await fetch('api/user/registerUser', {
       method: 'POST',
       mode: 'cors',
       headers: {

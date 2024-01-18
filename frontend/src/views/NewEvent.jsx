@@ -13,7 +13,7 @@ const NewEvent = () => {
     <div className="dashboardContainer">
     <div className="dashboardLeftContainer">
       <AddUserToEvent users={users} setUsers={setUsers}/>
-      <NewEventForm  users={users} events={events} setEvents={setEvents}/>    
+      <NewEventForm  users={users} setUsers = {setUsers} events={events} setEvents={setEvents}/>    
     </div>
     <div className="dashboardRightContainer">
       <h1 className="currentEventsHeader">Current Events</h1>
