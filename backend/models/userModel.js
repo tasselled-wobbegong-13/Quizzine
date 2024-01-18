@@ -42,7 +42,9 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+
     events: [newEventSchema],
+    
   },
   {
     timestamps: true,

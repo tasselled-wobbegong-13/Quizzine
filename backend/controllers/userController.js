@@ -64,6 +64,7 @@ controllerForUsers.authUser = async (req, res, next) => {
   }
 };
 
+
 controllerForUsers.getYelpData = async (req, res, next) => {
   // deconstruct from req body zip code
   const { zip_code } = req.body;
@@ -87,5 +88,6 @@ controllerForUsers.getYelpData = async (req, res, next) => {
       console.log(e);
     });
 };
+
 
 export default controllerForUsers;
