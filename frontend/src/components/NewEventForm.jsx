@@ -1,42 +1,44 @@
 import React from "react";
+import { json } from "react-router-dom";
 
 const NewEventForm = ({users, events, setUsers, setEvents}) => {
+    const newUsers = [...users]
   
   const handleSubmit = async (e) => {
+
     e.preventDefault();
+
     const eventDetails = {
       author: e.target.email.value,
-      invited_users: users,
-      address: e.target.address.value,
+      invited_users: newUsers,
+      address: e.target.ZipCode.value,
       newEventName: e.target.newEventName.value,
       date: e.target.date.value,
       time: e.target.time.value
     }
 
-    console.log('eventDetails Obj --> ',eventDetails)
-    console.log('invited_users array -->', eventDetails['invited_users'])
-
     setEvents(prevEvent => [...prevEvent, eventDetails]); 
-    // console.log('events state --> ',events)
+
+     await fetch('api/event/addEvent', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(eventDetails)
+    })
+      .then(data => data.json())
+      .then(jsonData => {
+        console.log('jsonData from newEventForm.jsx', jsonData)
+      })
+      .catch(err => console.log(err)); 
 
     setUsers([]);
     e.target.email.value = '';
-    e.target.address.value = '';
+    e.target.ZipCode.value = '';
     e.target.newEventName.value = '';
     e.target.date.value = '';
     e.target.time.value = '';
-
-    // await fetch('api/event/addEvent', {
-    //   method: 'POST',
-    //   mode: 'cors',
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(eventDetails)
-    // })
-    //   .then(data => data.json())
-
-    //   .catch(err => console.log(err)); 
   }
 
   return (
@@ -60,9 +62,9 @@ const NewEventForm = ({users, events, setUsers, setEvents}) => {
 
       <input
         type="text"
-        name="address"
-        id="address"
-        placeholder="123 Codesmith St"
+        name="ZipCode"
+        id="ZipCode"
+        placeholder="ZipCode"
         className="creatEventInput3"
       />
 

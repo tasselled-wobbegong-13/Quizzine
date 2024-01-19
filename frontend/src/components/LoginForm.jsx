@@ -24,7 +24,7 @@ const LoginForm = () => {
     })
       .then(data => data.json())
       .then(jsonData => {
-        setCurrUser(email);
+        // setCurrUser(email);
         navigate('/dashboard');
         // console.log('data within handleSubmit in react component -->', jsonData)
       })
