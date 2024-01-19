@@ -20,7 +20,6 @@ router.post('/authUser', controllerForUsers.authUser, (req, res) => {
 });
 
 router.post('/getYelpAPI', controllerForUsers.getYelpData, (req, res) => {
-  console.log('starting at yelp route');
   res.status(200).json(res.locals.businesses);
 });
 
