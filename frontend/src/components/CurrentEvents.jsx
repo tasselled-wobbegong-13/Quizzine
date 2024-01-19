@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState} from "react";
+import React from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 
 /*
@@ -11,61 +11,84 @@ newEventName: "bday"
 time: "01/15/24" 
 */
 
-const CurrentEvents =  ({ events }) => {
-  console.log('events prop in CurrentEvents', events)
-  const [eventResultdata, seteventResultdata] = useState([])
+const CurrentEvents = ({ events, yelpResults, setYelpResults }) => {
+  console.log("events prop in CurrentEvents", events);
+  const [eventResultdata, seteventResultdata] = useState([]);
   // console.log('events prop within currentEvents.jsx component',events)
   useEffect(() => {
     try {
-    fetch('/api/event/getEvents')
-    .then(eventData => eventData.json())
-    .then(eventDataJson => {
-      console.log('eventDataJson within currentEvents.jsx component',eventDataJson);
-      seteventResultdata(currEvents => [...curEvents, ...eventDataJson])
-    })
-    .catch((err) => console.log(err));
-  } catch(err){
-    console.log(err)
-  }
-  }, [events])
+      fetch("/api/event/getEvents")
+        .then((eventData) => eventData.json())
+        .then((eventDataJson) => {
+          console.log(
+            "eventDataJson within currentEvents.jsx component",
+            eventDataJson
+          );
+          seteventResultdata((curEvents) => [...curEvents, ...eventDataJson]);
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
+  }, [events]);
 
   // events
 
   // if(eventResultdata[0]) console.log('eventResultdata from currentEvents.jsx component', eventResultdata)
   // if(eventResultdata[0]) console.log('eventResultdata[0] from currentEvents.jsx component', eventResultdata[0])
-     
-    
-  const handleClick = async (e) => {    
-    console.log('e.target.id', e.target.id)
-    console.log('eventResultdata', eventResultdata)
-    console.log('currentEvents component events -->', eventResultdata);
+
+  const handleClick = async (e) => {
+    console.log("e.target.id", e.target.id);
+    console.log("eventResultdata", eventResultdata);
+    console.log("currentEvents component events -->", eventResultdata);
     // console.log('id currentEvents component events -->', eventResultdata[0]['_id']);
-    for(let i = 0; i < eventResultdata.length; i+=1){
-      if(e.target.id === eventResultdata[i]['_id']) {
-        console.log(eventResultdata[i]['address'])
-        fetch('api/user/getYelpAPI', {
-          method: 'POST',
+    for (let i = 0; i < eventResultdata.length; i += 1) {
+      if (e.target.id === eventResultdata[i]["_id"]) {
+        console.log(eventResultdata[i]["address"]);
+        fetch("api/user/getYelpAPI", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ zip_code: eventResultdata[i]['address']}),
+          body: JSON.stringify({ zip_code: eventResultdata[i]["address"] }),
         })
           .then((yelpResults) => yelpResults.json())
-          .then((response) => console.log('response from yelp results', response))
+          .then((response) => {
+            console.log(
+              "response from res Api in currentEvents component --> ",
+              response
+            );
+            response.map((element) => {
+              // const yelpResultsObj = {
+              //   id: response,
+              //   name: "",
+              //   image_url: "",
+              //   url: "",
+              //   review_count: "",
+              //   alias: "",
+              //   ratings: "",
+              //   price: "",
+              // };
+
+              setYelpResults((prevState) => [...prevState, element]);
+            });
+          })
           .catch((error) => console.log(error));
-        };
       }
     }
-  
+  };
 
- 
   //is this best practice to include the id generated within the event object into the button so we can match above?
   const curEvents = eventResultdata.map((event, index) => (
-      <button className="eventCard" key={event['_id']} id={event['_id']} onClick={handleClick}>
+    <button
+      className="eventCard"
+      key={event["_id"]}
+      id={event["_id"]}
+      onClick={handleClick}
+    >
       {event.newEventName}
     </button>
   ));
-
 
   return <div className="currentEventsContainer">{curEvents}</div>;
 };
