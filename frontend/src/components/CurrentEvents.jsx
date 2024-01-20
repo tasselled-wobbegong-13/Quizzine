@@ -11,7 +11,7 @@ newEventName: "bday"
 time: "01/15/24" 
 */
 
-const CurrentEvents = ({ events, yelpResults, setYelpResults }) => {
+const CurrentEvents = ({ events, setEvents, yelpResults, setYelpResults }) => {
   console.log("events prop in CurrentEvents", events);
   const [eventResultdata, seteventResultdata] = useState([]);
   // console.log('events prop within currentEvents.jsx component',events)
@@ -24,7 +24,7 @@ const CurrentEvents = ({ events, yelpResults, setYelpResults }) => {
             "eventDataJson within currentEvents.jsx component",
             eventDataJson
           );
-          seteventResultdata((curEvents) => [...curEvents, ...eventDataJson]);
+          setEvents((prevEvents) => [...prevEvents, eventDataJson]);
         })
         .catch((err) => console.log(err));
     } catch (err) {
@@ -79,7 +79,7 @@ const CurrentEvents = ({ events, yelpResults, setYelpResults }) => {
   };
 
   //is this best practice to include the id generated within the event object into the button so we can match above?
-  const curEvents = eventResultdata.map((event, index) => (
+  const curEvents = events.map((event, index) => (
     <button
       className="eventCard"
       key={event["_id"]}

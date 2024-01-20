@@ -25,8 +25,6 @@ const NewEventForm = ({ users, events, setUsers, setEvents }) => {
       time: e.target.time.value,
     };
 
-    await setEvents((prevEvent) => [...prevEvent, eventDetails]);
-
     await fetch("api/event/addEvent", {
       method: "POST",
       mode: "cors",
@@ -40,6 +38,8 @@ const NewEventForm = ({ users, events, setUsers, setEvents }) => {
         console.log("jsonData from newEventForm.jsx", jsonData);
       })
       .catch((err) => console.log(err));
+
+      await setEvents((prevEvent) => [...prevEvent, eventDetails]);
 
     setUsers([]);
     e.target.email.value = "";

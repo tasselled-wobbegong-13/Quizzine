@@ -25,6 +25,7 @@ const NewEvent = () => {
         <h1 className="currentEventsHeader">Current Events</h1>
         <CurrentEvents
           events={events}
+          setEvents={setEvents}
           yelpResults={yelpResults}
           setYelpResults={setYelpResults}
         />
