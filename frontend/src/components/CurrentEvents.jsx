@@ -11,36 +11,37 @@ newEventName: "bday"
 time: "01/15/24" 
 */
 
-const CurrentEvents = ({ events, setEvents, yelpResults, setYelpResults }) => {
-  console.log("events prop in CurrentEvents", events);
-  const [eventResultdata, seteventResultdata] = useState([]);
+
+const CurrentEvents =  ({ events, setYelpApiResults}) => {
+  console.log('events prop in CurrentEvents', events)
+  const [eventResultdata, seteventResultdata] = useState([])
   // console.log('events prop within currentEvents.jsx component',events)
   useEffect(() => {
     try {
-      fetch("/api/event/getEvents")
-        .then((eventData) => eventData.json())
-        .then((eventDataJson) => {
-          console.log(
-            "eventDataJson within currentEvents.jsx component",
-            eventDataJson
-          );
-          setEvents((prevEvents) => [...prevEvents, eventDataJson]);
-        })
-        .catch((err) => console.log(err));
-    } catch (err) {
-      console.log(err);
-    }
-  }, [events]);
+    fetch('/api/event/getEvents')
+    .then(eventData => eventData.json())
+    .then(eventDataJson => {
+      console.log('eventDataJson within currentEvents.jsx component',eventDataJson);
+      seteventResultdata([...eventDataJson])
+    })
+    .catch((err) => console.log(err));
+  } catch(err){
+    console.log(err)
+  }
+  }, [events])
+
 
   // events
 
   // if(eventResultdata[0]) console.log('eventResultdata from currentEvents.jsx component', eventResultdata)
   // if(eventResultdata[0]) console.log('eventResultdata[0] from currentEvents.jsx component', eventResultdata[0])
 
-  const handleClick = async (e) => {
-    console.log("e.target.id", e.target.id);
-    console.log("eventResultdata", eventResultdata);
-    console.log("currentEvents component events -->", eventResultdata);
+     
+  const handleClick = async (e) => {    
+    console.log('e.target.id', e.target.id)
+    console.log('eventResultdata', eventResultdata)
+    console.log('currentEvents component events -->', eventResultdata);
+
     // console.log('id currentEvents component events -->', eventResultdata[0]['_id']);
     for (let i = 0; i < eventResultdata.length; i += 1) {
       if (e.target.id === eventResultdata[i]["_id"]) {
@@ -54,29 +55,15 @@ const CurrentEvents = ({ events, setEvents, yelpResults, setYelpResults }) => {
         })
           .then((yelpResults) => yelpResults.json())
           .then((response) => {
-            console.log(
-              "response from res Api in currentEvents component --> ",
-              response
-            );
-            response.map((element) => {
-              // const yelpResultsObj = {
-              //   id: response,
-              //   name: "",
-              //   image_url: "",
-              //   url: "",
-              //   review_count: "",
-              //   alias: "",
-              //   ratings: "",
-              //   price: "",
-              // };
 
-              setYelpResults((prevState) => [...prevState, element]);
-            });
-          })
+              console.log('response from yelp results', response)
+              setYelpApiResults([...response])
+            }
+          )
+
           .catch((error) => console.log(error));
       }
     }
-  };
 
   //is this best practice to include the id generated within the event object into the button so we can match above?
   const curEvents = events.map((event, index) => (

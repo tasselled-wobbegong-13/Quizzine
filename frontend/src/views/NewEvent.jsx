@@ -7,8 +7,8 @@ import { useState } from "react";
 
 const NewEvent = () => {
   const [users, setUsers] = useState([]);
-  const [events, setEvents] = useState([]);
-  const [yelpResults, setYelpResults] = useState([]);
+  const [events, setEvents] = useState([]); 
+  const [yelpApiResults, setYelpApiResults] = useState([]);  
 
   return (
     <div className="dashboardContainer">
@@ -36,7 +36,16 @@ const NewEvent = () => {
         />
       </div>
     </div>
-  );
-};
+
+    <div className="dashboardRightContainer">
+      <h1 className="currentEventsHeader">Current Events</h1>
+      <CurrentEvents events={events} setYelpApiResults={setYelpApiResults}/>
+      <h1 className="yelpResultsHeader">Yelp Results</h1>
+      <YelpResults yelpApiResults={yelpApiResults}/>
+    </div>
+    </div>
+  )
+}
+
 
 export default NewEvent;
