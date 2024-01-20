@@ -1,19 +1,28 @@
 import React from "react";
+import { useEffect } from "react";
 
-const YelpResults = ({ yelpResults, setYelpResults }) => {
-  console.log("yelpResult prop from yelpResults component--> ", yelpResults);
 
-  return (
-    <div className="yelpResultsContainer">
-      <div className="restaurantName"></div>
-      <div className="genre"></div>
-      <div className="image"></div>
-      <div className="rating"></div>
-      <div className="price"></div>
-      <div className="url"></div>
-      <div className="phoneNumber"></div>
-    </div>
-  );
-};
+const YelpResults = ({yelpApiResults}) => {
+    console.log('yelpApiResults', yelpApiResults)
+   
+    // const events = yelpApiResults.map(yelp => {
+    //     // console.log('yelp', yelp)
+    //    <div className="yelpEventCard">{yelp}</div>
+    // })
+    const yelpRes = yelpApiResults.map((yelp, index) => (
+        <button className="yelpEventCard" key={yelp['_id']} id={yelp['_id']}>
+        {yelp.name}
+      </button>
+    ))
+
+    return (
+        <div className="yelpResultsContainer">
+            <div>
+            {yelpRes}
+            </div>
+        </div>
+    )
+}
+
 
 export default YelpResults;
