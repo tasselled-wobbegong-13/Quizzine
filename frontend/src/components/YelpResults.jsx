@@ -24,4 +24,5 @@ const YelpResults = ({yelpApiResults}) => {
     )
 }
 
+
 export default YelpResults;

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const newEventSchema = mongoose.Schema({
   author: {
@@ -20,6 +20,9 @@ const newEventSchema = mongoose.Schema({
   time: {
     type: String,
     required: true,
+  },
+  api_results: {
+    type: Array,
   },
 });
 
@@ -44,13 +47,12 @@ const userSchema = mongoose.Schema(
     },
 
     events: [newEventSchema],
-    
   },
   {
     timestamps: true,
   }
 );
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;
