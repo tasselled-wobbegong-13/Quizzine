@@ -186,3 +186,18 @@
     color: white;
     font-size: 20px;
   }
+
+  .yelpEventCard{
+    background-color: #7297cb;
+    /* border: 2px solid white; */
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }

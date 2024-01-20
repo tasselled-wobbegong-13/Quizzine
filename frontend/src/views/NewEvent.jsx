@@ -6,9 +6,9 @@ import YelpResults from '../components/YelpResults.jsx'
 import { useState} from "react";
 
 const NewEvent = () => {
-  const  [users, setUsers] = useState([]);
-  const  [events, setEvents] = useState([]); 
-
+  const [users, setUsers] = useState([]);
+  const [events, setEvents] = useState([]); 
+  const [yelpApiResults, setYelpApiResults] = useState([]);  
   return (
     <div className="dashboardContainer">
     <div className="dashboardLeftContainer">
@@ -17,9 +17,9 @@ const NewEvent = () => {
     </div>
     <div className="dashboardRightContainer">
       <h1 className="currentEventsHeader">Current Events</h1>
-      <CurrentEvents events={events}/>
+      <CurrentEvents events={events} setYelpApiResults={setYelpApiResults}/>
       <h1 className="yelpResultsHeader">Yelp Results</h1>
-      <YelpResults/>
+      <YelpResults yelpApiResults={yelpApiResults}/>
     </div>
     </div>
   )
