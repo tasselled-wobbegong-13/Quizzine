@@ -28,7 +28,7 @@ const CurrentEvents =  ({ events, setYelpApiResults}) => {
   } catch(err){
     console.log(err)
   }
-  }, [events])
+  }, [events])}
 
 
   // events
