@@ -21,24 +21,10 @@ const NewEvent = () => {
           setEvents={setEvents}
         />
       </div>
-      <div className="dashboardRightContainer">
-        <h1 className="currentEventsHeader">Current Events</h1>
-        <CurrentEvents
-          events={events}
-          setEvents={setEvents}
-          yelpApiResults={yelpApiResults}
-          setyelpApiResults={yelpApiResults}
-        />
-        <h1 className="yelpResultsHeader">Yelp Results</h1>
-        <YelpResults
-          yelpApiResults={yelpApiResults}
-          setyelpApiResults={yelpApiResults}
-        />
-    </div>
-
+  
     <div className="dashboardRightContainer">
       <h1 className="currentEventsHeader">Current Events</h1>
-      <CurrentEvents events={events} setYelpApiResults={setYelpApiResults}/>
+      <CurrentEvents events={events} setEvents={setEvents} setYelpApiResults={setYelpApiResults}/>
       <h1 className="yelpResultsHeader">Yelp Results</h1>
       <YelpResults yelpApiResults={yelpApiResults}/>
     </div>

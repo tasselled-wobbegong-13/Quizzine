@@ -1,30 +1,4 @@
-import mongoose from "mongoose";
-
-const newEventSchema = mongoose.Schema({
-  author: {
-    type: String,
-    required: true,
-  },
-  invited_users: {
-    type: Array,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: String,
-    required: true,
-  },
-  time: {
-    type: String,
-    required: true,
-  },
-  api_results: {
-    type: Array,
-  },
-});
+import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema(
   {
@@ -45,9 +19,11 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-
-    events: [newEventSchema],
+    event_id: {
+      type: Array
+    },
   },
+
   {
     timestamps: true,
   }

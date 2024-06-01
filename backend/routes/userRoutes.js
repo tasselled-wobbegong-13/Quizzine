@@ -19,8 +19,8 @@ router.post('/authUser', controllerForUsers.authUser, (req, res) => {
   res.status(200).json('User Authorized!');
 });
 
-router.post('/getYelpAPI', controllerForUsers.getYelpData, (req, res) => {
-  res.status(200).json(res.locals.businesses);
-});
+// router.post('/getYelpAPI', controllerForUsers.getYelpData, (req, res) => {
+//   res.status(200).json(res.locals.businesses);
+// });
 
 export default router;

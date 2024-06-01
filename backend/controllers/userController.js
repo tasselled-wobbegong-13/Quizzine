@@ -64,32 +64,34 @@ controllerForUsers.authUser = async (req, res, next) => {
   }
 };
 
-controllerForUsers.getYelpData = async (req, res, next) => {
-  console.log("req.body from getYelpData --> ", req.body);
-  // deconstruct from req body zip code
-  const { zip_code } = req.body;
-  console.log(zip_code);
-  console.log("zip_code in getYelpData controller -->", zip_code);
-  client
-    .search({
-      location: zip_code,
-      // offset: '0',
-      limit: "6",
-    })
-    .then((response) => {
-      console.log("response within the yelp api call");
-      console.log(
-        "getyelpdata controler JSON.stringify() results",
-        JSON.stringify(response.jsonBody)
-      );
 
-      res.locals.businesses = response.jsonBody.businesses;
-      return next();
-    })
-    .catch((e) => {
-      console.log("there was an error in the api call for yelp");
-      console.log(e);
-    });
-};
+// controllerForUsers.getYelpData = async (req, res, next) => {
+
+//   console.log('req.body from getYelpData --> ', req.body)
+//   // deconstruct from req body zip code
+//   const { zip_code } = req.body;
+//   console.log(zip_code)
+//   console.log('zip_code in getYelpData controller -->', zip_code);
+//   client
+//     .search({
+//       location: zip_code,
+//       // offset: '0',
+//       limit: '25',
+//     })
+//     .then((response) => {
+//       console.log('response within the yelp api call')
+//       console.log(
+//         'getyelpdata controler JSON.stringify() results',
+//         JSON.stringify(response.jsonBody)
+//       );
+//       res.locals.businesses = response.jsonBody.businesses;
+//       return next();
+//     })
+//     .catch((e) => {
+//       console.log('there was an error in the api call for yelp')
+//       console.log(e);
+//     });
+// };
+
 
 export default controllerForUsers;

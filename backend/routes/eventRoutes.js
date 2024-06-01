@@ -16,4 +16,8 @@ router.get("/getEvents", controllerForEvents.getEvents, (req, res) => {
   res.status(200).json(res.locals.events);
 }); // fetchs all event from DB
 
+router.post('/removeEvent', controllerForEvents.removeEvent, (req,res)=> {
+  res.status(200).json(res.locals.removedCard)
+})
+
 export default router;

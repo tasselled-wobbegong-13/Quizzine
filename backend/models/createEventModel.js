@@ -16,7 +16,8 @@ const newEventSchema = new Schema({
     },
     newEventName: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     date: {
         type: String,
@@ -25,6 +26,9 @@ const newEventSchema = new Schema({
     time: {
         type: String,
         required: true
+    },
+    yelp_results: {
+        type: Array,
     }
 })
 
