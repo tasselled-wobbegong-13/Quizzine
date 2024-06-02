@@ -1,7 +1,7 @@
 import React from "react";
 import { json } from "react-router-dom";
 
-const NewEventForm = ({ users, events, setUsers, setEvents }) => {
+const NewEventForm = ({ users, setUsers, setEvents }) => {
   const newUsers = [...users];
 
   const handleSubmit = async (e) => {
@@ -25,6 +25,8 @@ const NewEventForm = ({ users, events, setUsers, setEvents }) => {
       time: e.target.time.value,
     };
 
+    await setEvents((prevEvent) => [...prevEvent, eventDetails]);
+
     await fetch("api/event/addEvent", {
       method: "POST",
       mode: "cors",
@@ -38,8 +40,6 @@ const NewEventForm = ({ users, events, setUsers, setEvents }) => {
         console.log("jsonData from newEventForm.jsx", jsonData);
       })
       .catch((err) => console.log(err));
-
-      await setEvents((prevEvent) => [...prevEvent, eventDetails]);
 
     setUsers([]);
     e.target.email.value = "";
@@ -84,19 +84,18 @@ const NewEventForm = ({ users, events, setUsers, setEvents }) => {
           className="creatEventInput4"
         />
 
-        <input
-          type="text"
-          name="time"
-          id="time"
-          placeholder="Time"
-          className="creatEventInput5"
-        />
-        <button type="submit" className="createEventButton">
-          Create New Event
-        </button>
-      </form>
-    </div>
-  );
-};
+      <input
+        type="text"
+        name="time"
+        id="time"
+        placeholder="ex: 8pm"
+        className="creatEventInput5"
+      />
+      <button type="submit" className="createEventButton">Create New Event</button>
+    </form>
+  </div>
+  )
+
+}
 
 export default NewEventForm;

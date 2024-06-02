@@ -6,6 +6,7 @@ dotenv.config();
 import connectDB from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
+import yelpApiRoutes from './routes/yelpApiRoutes.js'
 
 const port = 8080;
 
@@ -17,11 +18,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.use('/api/user/', userRoutes);
 app.use('/api/event/', eventRoutes);
-
-// app.use('/api/yelpApi/', )
+app.use('/api/yelpApi/', yelpApiRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));
 
