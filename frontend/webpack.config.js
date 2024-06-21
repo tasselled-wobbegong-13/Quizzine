@@ -1,15 +1,22 @@
 const path = require("path");
+// const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+
+  entry: "./src/index.jsx",
+
   output: {
     path: path.resolve(__dirname, "./public"),
     filename: "./bundle.js",
   },
+
+  // plugins: [new HtmlWebPackPlugin()],
+
   resolve: {
     extensions: [".js", ".jsx"],
   },
+
   module: {
     rules: [
       {
@@ -38,8 +45,15 @@ module.exports = {
     open: true,
     hot: true,
     liveReload: true,
+    //if theres a 404 error, dev server will refernce index.html. (for react client side routing)
+    historyApiFallback: true,
     proxy: {
-      "/ingredients": "http://localhost:8080",
+      '/api/**': {
+        target: 'http://localhost:8080/',
+        secure: false,
+        changeOrigin: true,
+      }
     },
   },
 };
+

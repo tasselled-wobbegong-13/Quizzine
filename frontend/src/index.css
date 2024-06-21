@@ -1,0 +1,319 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+.dashboardContainer {
+  /* border: 5px solid red; */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.dashboardLeftContainer {
+  /* border: 2px solid blue; */
+  padding: 25px;
+  border: 5px solid white;
+  border-radius: 20px;
+  background-color: #7297cb;
+  height: 100vh;
+  width: 22vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.addUsersContainer {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #b2c5de;
+  width: 150px;
+  height: 200px;
+  overflow: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.addUsersButton {
+  color: white;
+  margin-top: 5px;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 3px;
+}
+
+.userInputFormContainer {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userListContainer {
+  border: 1.5px solid white;
+  border-radius: 2px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.unorderedList{
+  list-style: none;
+}
+
+.listItemInUserListContainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonInListItem{
+  padding: 0px 5px 0px 5px;
+  color: white;
+  background-color: red;
+  border: red;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  
+}
+
+.createEventContainer {
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #b2c5de;
+  width: 150px; 
+  height: 155px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.createEventForm {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  
+}
+
+.creatEventInput1 {
+  margin-top: 5px;
+}
+.creatEventInput2 {
+  margin-top: 5px;
+}
+.creatEventInput3 {
+  margin-top: 5px;
+}
+.creatEventInput4 {
+  margin-top: 5px;
+}
+.creatEventInput5 {
+  margin-top: 5px;
+}
+
+.createEventButton {
+  margin-top: 5px;
+  color: white;
+  background-color: red;
+  border: red;
+  border-radius: 3px;
+}
+
+.dashboardRightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid white;
+  border-radius: 20px;
+  background-color: #7297cb;
+  width: 78vw;
+}
+
+.currentEventsHeader {
+  color: white;
+  font-size: 20px;
+}
+
+.currentEventsContainer {
+  width: 70vw;
+  height: 25vh;
+  border: 3px solid white;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: auto;
+  display: flex;
+  flex-wrap:wrap;
+  background-color: #9eb7da;
+}
+
+.eventCard {
+  background-color: #7297cb;
+  border: 1px solid #7297cb;
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.eventCard:hover {
+  background-color: #7297cb;
+  border: 2px solid white;
+  color: white;
+  font-weight: bold;
+}
+
+.removeCardButton {
+   position: absolute;
+   border: 1px solid red;
+   width: 18px;
+   height: 18px;
+   top: 0;
+   right: 0;
+   border-radius: 5px;
+   background-color: red;
+   color: white;
+   font-weight: bold;
+   font-size: 11px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.removeCardButton:hover {
+  border: 1px solid gold;
+  background-color: gold;
+  color: black;
+}
+
+.eventCardHeader{
+  font-size: 14px;
+}
+.eventCardTimeAndDateDiv{
+  margin-top: 3px;
+  font-size: 10px
+}
+
+.yelpResultsContainer{
+  width: 70vw;
+  height: 55vh;
+  border: 3px solid white;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  overflow: auto;
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap:wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #9eb7da;
+}
+
+.yelpResultsHeader{
+  color: white;
+  font-size: 20px;
+}
+
+.yelpEventCard{
+  background-color: #7297cb;
+  border: 1px solid #7297cb;
+  padding: 10px;
+  margin: 10px;
+  width: 170px;
+  height: 200px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: relative;
+}
+
+.yelpResDivForImg {
+  width: 130px;
+  height: 80px;
+  border: 2px solid white;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.yelpResImg {
+     width: 100%;
+     height: 100%;
+     border-radius: 8px;
+}
+
+.yelpHeaderInCard{
+  /* border-bottom: 1px solid black; */
+  margin-top: 5px;
+  font-size: 12px;
+  font-family: 'Playfair Display', serif;
+  color: rgb(6, 0, 0);
+}
+
+.YelpCardReviewSection{
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: black;
+}
+
+.reviewCountSpan{
+  font-weight: 500;
+
+}
+  
+.yelpCardAnchor{
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+}
+.yelpCardAnchor:hover{
+  color: gold;
+}
+
+.yelpCardButtonBadge{
+  border: 1px solid red;
+  height: 25px;
+  width: 25px;
+  border-radius: 6px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yelpCardButtonBadge:hover{
+  /* background-color: white;
+  border: 1px solid black;
+  color: black; */
+  background-color: gold;
+  border: 1px solid gold;
+  color: black;
+}
+
+.spanCashSymbol{
+  color: white;
+}
