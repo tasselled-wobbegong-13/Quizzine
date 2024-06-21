@@ -2,7 +2,6 @@ import CreatedNewEvent from '../models/createEventModel.js';
 import yelp from 'yelp-fusion';
 import 'dotenv/config'
 const apiKey = process.env.API_KEY;
-
 const client = yelp.client(apiKey);
 
 
